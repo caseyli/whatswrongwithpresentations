@@ -2,6 +2,8 @@ Whatswrongwithpresentations::Application.routes.draw do
   root :to => 'main#index'
 
   get "main/index"
+  
+  match "/comingsoon" => "main#comingsoon"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -13,6 +13,22 @@ body {
 	margin:0 auto;
 }
 
+.right-justified {
+	display:block;
+	text-align:right;
+}
+
+.center-justified {
+	display:block;
+	text-align:center;
+}
+
+/* Index */
+
+.index_image_link {
+	width:120px;
+}
+
 /* Navigation */
 
 nav {
@@ -20,34 +36,8 @@ nav {
 	white-space: nowrap;
 }
 
-nav ul {
-	margin: 0;
-	padding: 0;
-	width: 100%;
-	height: 40px;
-	background:url(/images/menubg.png);
-}
-
-nav ul li {
-	list-style-type: none;
-	display: inline-block;
-	padding: 0.8em 0.8em;
-}
-
-nav ul li a {
-	padding: 0 5px;
-	font-weight: bold;
-	color: white;
-	text-decoration: none;
-}
-
-nav ul li a:visited {
-	color: white;
-}
-
-nav ul li a:hover {
-	color:#fff;
-	text-decoration: underline;
+.header_image_link {
+	width:50px;
 }
 
 /* Lists */

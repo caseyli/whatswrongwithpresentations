@@ -1,15 +1,16 @@
 <header>
-	<nav class="round">
-		<ul>
-			<li>
-				<%= link_to "Home", "/main/home" %>
-			</li>
-			<li>
-				<%= link_to "Browse", "/open_mics" %>
-			</li>
-			<li>
-				<%= link_to "About", "/pages/about" %>
-			</li>
-		</ul>
-	</nav>
+	<div class="right-justified">
+		<%= logo %>
+
+		<% unless @hide_header_links %>	
+			<nav class="round">
+				<%= link_to image_tag("home.png", :class=>'header_image_link'), root_path %>
+				<%= link_to image_tag("introduction.png", :class=>'header_image_link'), '/comingsoon' %>
+				<%= link_to image_tag("lessons.png", :class=>'header_image_link'), '/comingsoon' %>
+				<%= link_to image_tag("videos.png", :class=>'header_image_link'), '/comingsoon' %>
+				<%= link_to image_tag("materials.png", :class=>'header_image_link'), '/comingsoon' %>
+				<%= link_to image_tag("feedback.png", :class=>'header_image_link'), '/comingsoon' %>
+			</nav>
+		<% end %>
+	</div>
 </header>
