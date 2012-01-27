@@ -3,7 +3,7 @@
 		<%= logo %>
 
 		<% unless @hide_header_links %>	
-			<nav class="round">
+			<nav>
 				<%= link_to image_tag("home.png", :class=>'header_image_link'), root_path, {:title => "home"} %>
 				<%= link_to image_tag("introduction.png", :class=>'header_image_link'), '/introduction', {:title => "introduction"} %>
 				<%= link_to image_tag("lessons.png", :class=>'header_image_link'), '/lessons', {:title => "lessons"} %>
@@ -13,12 +13,13 @@
 				
 			</nav>
 		<% end %>
+		
 		<br/>
 		<% if signed_in? %>
-					<%= link_to current_user.display_name, current_user %> |
-					<%= link_to "Sign out", signout_path %>
-				<% else %>
-					<%= link_to "Sign in", signin_path %>
-				<% end %>
+			<%= link_to current_user.display_name, current_user %> |
+			<%= link_to "Sign out", signout_path %>
+		<% else %>
+			<%= link_to "Sign in", signin_path %>
+		<% end %>
 	</div>
 </header>
