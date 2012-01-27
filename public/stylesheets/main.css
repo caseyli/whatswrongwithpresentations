@@ -40,6 +40,18 @@ nav {
 	width:50px;
 }
 
+/* Links */
+a, a:visited {
+	color: white;
+	text-decoration:none;
+}
+
+a:hover {
+	color: white;
+	text-decoration:underline;
+}
+
+
 /* Lists */
 
 ul.bodylist {

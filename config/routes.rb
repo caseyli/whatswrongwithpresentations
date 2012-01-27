@@ -1,9 +1,13 @@
 Whatswrongwithpresentations::Application.routes.draw do
   root :to => 'main#index'
 
+  get "lessons/index"
+  get "lessons/show"
   get "main/index"
   
+  match "/introduction" => "main#introduction"
   match "/comingsoon" => "main#comingsoon"
+  match "/lessons" => "lessons#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
