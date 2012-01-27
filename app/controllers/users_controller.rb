@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
   before_filter :authenticate, :except => [:new, :create, :show]
   before_filter :admin_user, :only => [:index, :destroy]
-  before_filter :correct_user, :only => [:edit, :update]
+  before_filter :correct_user, :only => [:edit, :update, :show]
   
   def new
     @user = User.new
