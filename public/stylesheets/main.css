@@ -74,14 +74,14 @@ ul.bodylist li a {
 	padding: 5px 5px 5px 5px;
 	margin: 5px auto 5px 0;
 	text-decoration: none;
-	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#000), to(#001d41));
 	display: block;
 	width: 100%;
 }
 
 ul.bodylist li a:hover {
 	text-decoration: none;
-	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fff), to(#001d41));
+	background-color: white;
+	color: black;
 	display: block;
 }
 

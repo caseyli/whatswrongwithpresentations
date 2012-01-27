@@ -1,6 +1,6 @@
 <h1>Lessons</h1>
 
-<ul>
+<ul class='bodylist'>
 <% @lessons.each do |lesson| %>
   <li>
     <%= link_to "LE-#{lesson.category}#{lesson.orderby}: #{lesson.title}", lesson %>
