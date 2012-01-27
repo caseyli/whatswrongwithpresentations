@@ -10,7 +10,15 @@
 				<%= link_to image_tag("videos.png", :class=>'header_image_link'), '/comingsoon', {:title => "videos"} %>
 				<%= link_to image_tag("materials.png", :class=>'header_image_link'), '/comingsoon', {:title => "materials"} %>
 				<%= link_to image_tag("feedback.png", :class=>'header_image_link'), '/comingsoon', {:title => "feedback"} %>
+				
 			</nav>
 		<% end %>
+		<br/>
+		<% if signed_in? %>
+					<%= link_to current_user.display_name, current_user %> |
+					<%= link_to "Sign out", signout_path %>
+				<% else %>
+					<%= link_to "Sign in", signin_path %>
+				<% end %>
 	</div>
 </header>

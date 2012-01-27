@@ -12,6 +12,9 @@
 			<%= render 'layouts/header'%>
 		</div>
 		<div class="main">
+			<% flash.each do |key, value| %>
+				<div class="flash <%= key %>"><%= value %></div>
+			<% end %>
 			<%= yield %>
 		</div>
 		<div class="footer">
