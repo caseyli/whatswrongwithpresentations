@@ -7,4 +7,8 @@ class MainController < ApplicationController
     
   end
   
+  def introduction
+    @introduction = Lesson.unscoped.find_by_category("0")
+  end
+  
 end

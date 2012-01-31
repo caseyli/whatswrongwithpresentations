@@ -4,7 +4,7 @@ class LessonsController < ApplicationController
   before_filter :admin_user, :except => [:index, :show]
    
   def index
-    @lessons = Lesson.all
+    @lessons = Lesson.lessons_only
 
     respond_to do |format|
       format.html # index.html.erb
