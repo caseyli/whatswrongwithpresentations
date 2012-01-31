@@ -2,7 +2,7 @@
   <%= @lesson.title %>
 </h1>
 <p>
-  <%= @lesson.content %>
+  <%= raw(@lesson.content) %>
 </p>
 
 <% if admin? %>
