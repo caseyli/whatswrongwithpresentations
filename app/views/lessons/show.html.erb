@@ -4,6 +4,9 @@
 <p>
   <%= raw(@lesson.content) %>
 </p>
+<p>
+  <%= @lesson.updated_at.strftime("Last Updated %B %d, %Y") %>
+</p>
 
 <% if admin? %>
 	<%= link_to 'Edit', edit_lesson_path(@lesson) %> | <%= link_to 'Destroy', @lesson, :confirm => 'Are you sure?', :method => :delete %> | 
