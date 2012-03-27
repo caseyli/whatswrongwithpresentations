@@ -1,0 +1,3 @@
+rvm use r192
+rvm gemset use rails305
+
