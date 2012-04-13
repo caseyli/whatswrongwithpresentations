@@ -4,20 +4,13 @@ attr_accessor :password
   
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   
-  validates :first_name,:presence     => true
-  
-  validates :last_name, :presence     => true
-  
-  validates :display_name, :presence  => true
   
   validates :email,     :presence     => true,
                         :format       => { :with => email_regex },
                         :uniqueness   => true
                     
-  validates :password,  :presence     => true,
-                        :confirmation => true,
-                        :length       => { :within => 6..40 }                       
-                        
+  validates :password,  :confirmation => true,
+                        :length       => { :within => 6..40 }                      
                         
   before_save :encrypt_password
 

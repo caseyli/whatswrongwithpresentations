@@ -1,12 +1,13 @@
 class UsersController < ApplicationController
 
-  before_filter :authenticate, :except => [:new, :create, :show]
+  before_filter :authenticate, :except => [:new, :create, :show, :registered]
   before_filter :admin_user, :only => [:index, :destroy]
   before_filter :correct_user, :only => [:edit, :update, :show]
   
   def new
     @user = User.new
     @title = "Register"
+    @user.email = params[:email]
   end
   
   def index
@@ -44,6 +45,15 @@ class UsersController < ApplicationController
   end
 
   def update
+  end
+  
+  def registered
+    #if request.post?
+      @user = User.find_by_email(params[:email])
+      respond_to do |format|
+        format.json { render :json => { :registered => !@user.nil?}.to_json }
+      end
+    #end
   end
 
   private

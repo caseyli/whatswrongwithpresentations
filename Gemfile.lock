@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/archiloque/rest-client.git
+  revision: 2a32c7b3db297132afc03794dbdafe1fccaf1bd4
+  specs:
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
+      netrc
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -39,6 +47,7 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.17.2)
+    netrc (0.7.1)
     pg (0.11.0)
     polyglot (0.3.3)
     rack (1.2.4)
@@ -74,3 +83,4 @@ PLATFORMS
 DEPENDENCIES
   pg
   rails (= 3.0.9)
+  rest-client (= 1.6.7)!

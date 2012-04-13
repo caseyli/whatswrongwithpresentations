@@ -1,0 +1,28 @@
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js"></script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/googleapis/0.0.4/googleapis.min.js"></script>
+<script type="text/javascript" src="//ajax.googleapis.com/jsapi"></script>
+<script type="text/javascript">
+  google.load("identitytoolkit", "1", {packages: ["ac"], language:"en"});
+</script>
+<script type="text/javascript">
+  $(function() {
+  	var host = "www.whatswrongwithpresentations.com"
+    window.google.identitytoolkit.setConfig({
+        developerKey: "AIzaSyCy_2YFMWPYA412Q0sKvU22kSVZYdw2hro",
+        companyName: "",
+        callbackUrl: "http://" + host + "/callback",
+        realm: "",
+        userStatusUrl: "http://" + host + "/userregistered",
+        loginUrl: "http://" + host + "/sessions",
+        signupUrl: "http://" + host + "/signup",
+        homeUrl: "http://" + host + "/",
+        logoutUrl: "http://" + host + "/signout",
+        idps: ["Gmail", "GoogleApps", "Yahoo"],
+        tryFederatedFirst: true,
+        useCachedUserStatus: false,
+        useContextParam: false
+    });
+    $("#navbar").accountChooser();
+  });
+</script>

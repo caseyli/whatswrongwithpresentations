@@ -23,3 +23,13 @@ world just doesn't know how to present.
 	<%= link_to image_tag("feedback.png", :class=>'index_image_link'), '/comingsoon', {:title => "feedback"} %>
 	</div>
 </p>
+
+<!-- GITKit -->
+<% if signed_in? %>
+<script type="text/javascript">
+  var userData = {
+    email: '<%= current_user.email %>', // required
+  };
+  window.google.identitytoolkit.updateSavedAccount(userData);
+</script>
+<% end %>
