@@ -6,6 +6,7 @@ gem 'rails', '3.0.9'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
+gem 'rest-client', '1.6.7', :git => "git://github.com/archiloque/rest-client.git"
 
 # Use unicorn as the web server
 # gem 'unicorn'

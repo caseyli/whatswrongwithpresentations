@@ -1,34 +1,51 @@
 class SessionsController < ApplicationController
   include SessionsHelper
+  require 'uri'
+  require 'restclient' # https://github.com/archiloque/rest-client
   
   def new
     @title = "Sign in"
   end
   
   def create
-    user = User.authenticate(params[:session][:email],
-                             params[:session][:password])
+    # GitKit
+    user = User.authenticate params[:email], params[:password]
                                         
     if user.nil?
-      @title = "Sign in"
-      message = "Invalid E-mail or Password."
-      flash[:error] = message
-      
-      respond_to do |format|
-        format.html { render 'new' }
-        format.json { render :json => '{ "response" : "false", "message" : "' + message + '" }' }
-        
+      respond_to do |format|    
+        format.json { render :json => { :status => "passwordError" }.to_json }
       end
-      
     else
-      flash[:success] = "Welcome back to WWWP"
       sign_in user
-      
       respond_to do |format|
-        format.html { redirect_back_or(root_path) }
-        format.json { render :json => '{ "response" : "true" }' }
+        format.json { render :json => { :status => "OK" }.to_json }
       end
-      
+    end
+  end
+  
+  def callback
+    api_params = {
+      'requestUri' => request.url,
+      'postBody' => request.post? ? request.raw_post : URI.parse(request.url).query
+    }
+  
+    api_url = "https://www.googleapis.com/identitytoolkit/v1/relyingparty/" +
+    "verifyAssertion?key=AIzaSyCy_2YFMWPYA412Q0sKvU22kSVZYdw2hro"
+  
+    assertion = get_assertion(api_url, api_params)
+    if !assertion.nil? && !assertion["verifiedEmail"].nil?
+        @user = User.find_by_email(assertion["verifiedEmail"])
+        if @user.nil?
+          @user = User.new
+          @user.email = assertion["verifiedEmail"]
+          @user.display_name = assertion["displayName"]
+          @user.first_name = assertion["firstName"]
+          @user.last_name = assertion["lastName"]
+          @user.save
+        end
+        sign_in @user
+    else
+      # handle bad login
     end
   end
   
@@ -36,20 +53,8 @@ class SessionsController < ApplicationController
     sign_out
     respond_to do |format|
       format.html { redirect_to root_path }
-      format.json { render :json => '{ "response" : "true" }' }
     end
     
-  end
-  
-  def signed_in
-    if signed_in?
-      response = '{ "response" : "true" }'
-    else
-      response = '{ "response" : "false" }'
-    end
-    respond_to do |format|
-      format.json { render :json => response }
-    end
   end
     
   private 
@@ -62,5 +67,19 @@ class SessionsController < ApplicationController
         false
       end
     end
+    
+
+   def get_assertion(url, params)
+      begin
+        api_response = RestClient.post(url, params.to_json, :content_type => :json )
+        verified_assertion = JSON.parse(api_response)
+        raise StandardError unless verified_assertion.include? "verifiedEmail"
+        return verified_assertion
+      rescue StandardError => error
+        return nil
+      end
+    end
+  
+
 
 end

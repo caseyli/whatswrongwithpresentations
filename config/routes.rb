@@ -1,5 +1,5 @@
 Whatswrongwithpresentations::Application.routes.draw do
-
+  
   resources :sessions
   resources :users
   resources :lessons
@@ -12,6 +12,8 @@ Whatswrongwithpresentations::Application.routes.draw do
   match '/signin', :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
   match '/signup', :to => 'users#new'
+  match '/userregistered', :to => 'users#registered'
+  match '/callback', :to => 'sessions#callback'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
