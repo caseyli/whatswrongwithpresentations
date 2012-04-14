@@ -41,7 +41,7 @@ class SessionsController < ApplicationController
           @user.display_name = assertion["displayName"]
           @user.first_name = assertion["firstName"]
           @user.last_name = assertion["lastName"]
-          @user.save
+          @user.save(:validate => false)
         end
         sign_in @user
     else
