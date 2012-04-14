@@ -47,6 +47,17 @@ class UsersController < ApplicationController
   def update
   end
   
+  def destroy
+    destroyuser = User.find(params[:id])
+    if(destroyuser == current_user)
+      flash[:error] = "Cannot destroy yourself."
+    else
+      destroyuser.destroy
+      flash[:success] = "User destroyed."
+    end
+    redirect_to users_path
+  end
+  
   def registered
     #if request.post?
       @user = User.find_by_email(params[:email])
@@ -66,6 +77,7 @@ class UsersController < ApplicationController
     end
     
     def admin_user
+      flash[:error] = "You do not have permission to view this page." unless current_user.admin?
       redirect_to(root_path) unless current_user.admin?
     end
 
